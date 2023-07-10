@@ -75,9 +75,11 @@ const App = () => {
         <p>Precio: ${product.price}</p>
       </div>
       <div className="card-footer">
+        <button>
         <a href={product.permalink} target="_blank" rel="noopener noreferrer">
           Comprar
         </a>
+        </button>
       </div>
     </div>
   ))}
