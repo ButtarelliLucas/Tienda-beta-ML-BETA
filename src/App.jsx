@@ -55,31 +55,33 @@ const App = () => {
       </div>
       </div>
       <div className="card-container">
-        {products.map((product) => (
-          <div key={product.id} className="card">
-            <div className="card-image">
-              <img src={product.thumbnail} alt={product.title} />
-            </div>
-            <h2>{product.title}</h2>
-            {product.attributes &&
-              product.attributes.map((attribute) => {
-                if (attribute.id === 'BRAND') {
-                  return <p key={attribute.id}>Marca: {attribute.value_name}</p>;
-                }
-                if (attribute.id === 'ITEM_CONDITION') {
-                  return <p key={attribute.id}>Condición: {attribute.value_name}</p>;
-                }
-                return null;
-              })}
-            <p>Precio: ${product.price}</p>
-            <div>
-              <a href={product.permalink} target="_blank" rel="noopener noreferrer">
-                Comprar
-              </a>
-            </div>
-          </div>
-        ))}
+  {products.map((product) => (
+    <div key={product.id} className="card">
+      <div className="card-image">
+        <img src={product.thumbnail} alt={product.title} />
       </div>
+      <div className="card-content">
+        <h2>{product.title}</h2>
+        {product.attributes &&
+          product.attributes.map((attribute) => {
+            if (attribute.id === 'BRAND') {
+              return <p key={attribute.id}>Marca: {attribute.value_name}</p>;
+            }
+            if (attribute.id === 'ITEM_CONDITION') {
+              return <p key={attribute.id}>Condición: {attribute.value_name}</p>;
+            }
+            return null;
+          })}
+        <p>Precio: ${product.price}</p>
+      </div>
+      <div className="card-footer">
+        <a href={product.permalink} target="_blank" rel="noopener noreferrer">
+          Comprar
+        </a>
+      </div>
+    </div>
+  ))}
+</div>
       <div className="pagination">
         <button onClick={prevPage} disabled={currentPage === 1}>
           Anterior
